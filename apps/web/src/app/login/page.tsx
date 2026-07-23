@@ -1,36 +1,89 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button, Input } from '@paymentflow/ui';
+import { AuthScaffold } from '@/features/auth';
+import { useAuth } from '@/providers/auth-provider';
+
+function readNextPath(): string {
+  if (typeof window === 'undefined') return '/dashboard';
+  const value = new URLSearchParams(window.location.search).get('next');
+  return value?.startsWith('/') && !value.startsWith('//') ? value : '/dashboard';
+}
 
 export default function LoginPage() {
   const router = useRouter();
+  const { login, status } = useAuth();
   const [email, setEmail] = useState('michael@northstar.example');
   const [password, setPassword] = useState('paymentflow-demo');
+  const [remember, setRemember] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (status === 'authenticated') router.replace(readNextPath());
+  }, [router, status]);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+    setError(null);
+    setNotice(null);
+    setSubmitting(true);
+    try {
+      await login({ email, password, remember });
+      router.replace(readNextPath());
+    } catch (loginError) {
+      setError(loginError instanceof Error ? loginError.message : 'Sign in failed. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
-    <main className="auth-page">
-      <section className="auth-page__panel" aria-labelledby="login-heading">
-        <div className="auth-page__brand"><span>PF</span><div><strong>PaymentFlow</strong><small>AI</small></div></div>
-        <div className="auth-page__copy">
-          <span className="workspace-page-header__eyebrow">Secure business workspace</span>
-          <h1 id="login-heading">Welcome back</h1>
-          <p>Sign in to manage wallets, payments, treasury tasks, and AI-agent recommendations.</p>
+    <AuthScaffold
+      eyebrow="Secure workspace access"
+      title="Welcome back"
+      description="Sign in to manage wallets, approvals, payments, and AI-guided treasury work."
+      footer={<p>New to PaymentFlow? <Link href="/signup">Create your workspace</Link></p>}
+    >
+      <form onSubmit={handleSubmit} className="auth-page__form" noValidate>
+        {error && <div className="auth-form-message auth-form-message--error" role="alert">{error}</div>}
+        {notice && <div className="auth-form-message auth-form-message--info" role="status">{notice}</div>}
+        <Input
+          label="Work email"
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          autoComplete="email"
+          required
+        />
+        <Input
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          autoComplete="current-password"
+          minLength={8}
+          required
+        />
+        <div className="auth-page__meta">
+          <label className="auth-checkbox"><input type="checkbox" checked={remember} onChange={(event) => setRemember(event.target.checked)} /><span>Remember this device</span></label>
+          <button type="button" onClick={() => setNotice('Password recovery will be connected when production email delivery is configured.')}>Forgot password?</button>
         </div>
-        <form onSubmit={(event) => { event.preventDefault(); router.push('/dashboard'); }} className="auth-page__form">
-          <Input label="Work email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" />
-          <Input label="Password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" />
-          <div className="auth-page__meta"><label><input type="checkbox" defaultChecked /> Remember this device</label><button type="button">Forgot password?</button></div>
-          <Button type="submit" className="full-width-button">Sign in to demo</Button>
-        </form>
-        <p className="auth-page__disclaimer">This deployable MVP uses demonstration authentication and mock financial data. Do not enter real banking credentials.</p>
-      </section>
-      <aside className="auth-page__visual">
-        <div className="auth-visual-card auth-visual-card--primary"><span>Portfolio balance</span><strong>$284,612.43</strong><small>↑ 4.8% this month</small></div>
-        <div className="auth-visual-card"><span>PaymentFlow AI</span><p>“Your Friday payroll is covered, but the GBP wallet may fall below its configured buffer.”</p></div>
-        <div className="auth-visual-grid"><span>USD</span><span>EUR</span><span>GBP</span><span>GHS</span><span>NGN</span><span>KES</span></div>
-      </aside>
-    </main>
+        <Button type="submit" className="full-width-button" disabled={submitting}>
+          {submitting ? 'Signing in…' : 'Sign in'}
+        </Button>
+        <button
+          type="button"
+          className="auth-demo-button"
+          onClick={() => { setEmail('michael@northstar.example'); setPassword('paymentflow-demo'); setNotice('Demo credentials loaded.'); }}
+        >
+          Use demo credentials
+        </button>
+      </form>
+    </AuthScaffold>
   );
 }

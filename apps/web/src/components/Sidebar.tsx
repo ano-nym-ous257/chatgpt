@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/providers/auth-provider';
 
 export interface SidebarProps {
   isOpen: boolean;
@@ -116,6 +117,8 @@ const NAV_ITEMS: readonly NavItem[] = [
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, logout } = useAuth();
 
   let currentGroup: string | undefined;
 
@@ -174,14 +177,15 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       <div className="sidebar__footer">
         <div className="sidebar__user">
-          <div className="sidebar__user-avatar">
-            <span>MR</span>
-          </div>
+          <div className="sidebar__user-avatar"><span>{user?.initials ?? 'PF'}</span></div>
           <div className="sidebar__user-info">
-            <span className="sidebar__user-name">Michael R.</span>
-            <span className="sidebar__user-role">Finance Manager</span>
+            <span className="sidebar__user-name">{user?.name ?? 'PaymentFlow user'}</span>
+            <span className="sidebar__user-role">{user?.role ?? 'Workspace member'}</span>
           </div>
         </div>
+        <button type="button" className="sidebar__logout" onClick={() => { logout(); router.replace('/login'); }}>
+          <span aria-hidden="true">↪</span> Sign out
+        </button>
       </div>
     </aside>
   );

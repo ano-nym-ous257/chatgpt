@@ -2,6 +2,9 @@
 
 ### Added
 
+- Added Lamplight-inspired login and signup experiences with validation, protected workspace routing, persistent demo sessions, and sign-out.
+- Added a global light/dark appearance system with persisted preference, no-flash initialization, header/auth toggles, and settings controls.
+- Personalized navigation, profile settings, dashboard greetings, and the AI workspace from the active demo account.
 - Added a route-aware, viewport-triggered UI motion system with staggered module reveals.
 - Added premium micro-interactions for cards, navigation, Quick Actions, buttons, live states, dialogs, drawers, and authentication surfaces.
 - Added comprehensive reduced-motion handling and motion-system documentation for future web, mobile, and AI-agent modules.

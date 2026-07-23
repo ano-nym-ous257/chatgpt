@@ -1,15 +1,15 @@
 # Auth Feature
 
-Handles user authentication, session management, and identity.
+Provides the deployable MVP authentication experience.
 
-Responsibilities:
-- Login and registration flows
-- Session lifecycle (access/refresh tokens)
-- MFA enrollment and verification
-- Password management
-- Device trust and recognition
+Implemented now:
+- Lamplight-inspired login and registration pages
+- Browser-local demo accounts with salted SHA-256 password hashes
+- Remember-me and session-only sign-in modes
+- Protected workspace routes, profile-aware navigation, and sign-out
+- Clear demo-security messaging
 
-Boundaries:
-- Does NOT manage user profile data (see settings)
-- Does NOT enforce payment authorization (see payments)
-- Exposes auth state to other features via AuthProvider
+Production boundary:
+- Browser storage is for product demonstration only and is not a security boundary.
+- Production auth must move credentials, sessions, verification, MFA, lockout, and audit logging to the auth service described in M1.
+- Payment authorization remains separate from identity authentication.

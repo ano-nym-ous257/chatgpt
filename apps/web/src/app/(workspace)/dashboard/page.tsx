@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Badge, Card, Divider, Grid, Stack } from '@paymentflow/ui';
 import {
@@ -20,8 +22,11 @@ import {
   trendArrow,
 } from '@/lib/format';
 import { AGENT_INSIGHTS, QUICK_ACTIONS } from '@/lib/product';
+import { useAuth } from '@/providers/auth-provider';
 
 export default function DashboardPage() {
+  const { user } = useAuth();
+  const firstName = user?.name.split(' ')[0] ?? 'there';
   const recentTransactions = transactions.slice(0, 5);
   const topRates = exchangeRates.slice(0, 4);
   const upcomingPayments = pendingPayments.slice(0, 4);
@@ -32,7 +37,7 @@ export default function DashboardPage() {
       <Stack direction="vertical" gap="32px">
         <PageHeader
           eyebrow="Business workspace"
-          title="Good morning, Michael"
+          title={`Good morning, ${firstName}`}
           description={`Wednesday, July 16, 2026 · ${dashboardSummary.pendingPayments} pending payments require attention`}
           actions={
             <Link href="/ai" className="btn btn--primary">

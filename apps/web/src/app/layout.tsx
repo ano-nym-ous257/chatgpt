@@ -20,9 +20,12 @@ export const viewport: Viewport = {
   themeColor: '#050a12',
 };
 
+const themeBootstrap = `(function(){try{var t=localStorage.getItem('paymentflow.theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){document.documentElement.dataset.theme='dark'}})()`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: themeBootstrap }} /></head>
       <body>
         <AppProviders>{children}</AppProviders>
       </body>

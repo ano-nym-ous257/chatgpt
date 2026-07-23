@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const ROUTES = ['/dashboard', '/wallets', '/payments', '/transactions', '/exchange-rates', '/ai', '/settings', '/login'];
+const ROUTES = ['/dashboard', '/wallets', '/payments', '/transactions', '/exchange-rates', '/ai', '/settings', '/login', '/signup'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://paymentflow-ai.vercel.app';

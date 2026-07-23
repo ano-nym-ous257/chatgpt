@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { ThemeToggle } from './ThemeToggle';
+import { useAuth } from '@/providers/auth-provider';
 
 export interface HeaderProps {
   onMenuToggle: () => void;
@@ -9,6 +11,8 @@ export interface HeaderProps {
 }
 
 export function Header({ onMenuToggle, onSearchOpen, onNotificationsOpen }: HeaderProps) {
+  const { user } = useAuth();
+
   return (
     <header className="shell__header header" role="banner">
       <div className="header__inner">
@@ -56,6 +60,7 @@ export function Header({ onMenuToggle, onSearchOpen, onNotificationsOpen }: Head
               <span aria-hidden="true">&#8984;</span>K
             </kbd>
           </button>
+          <ThemeToggle className="header__theme-toggle" />
           <button
             type="button"
             className="header__icon-btn header__notif-btn"
@@ -79,7 +84,7 @@ export function Header({ onMenuToggle, onSearchOpen, onNotificationsOpen }: Head
             <span className="header__notif-dot" aria-label="3 unread notifications" />
           </button>
           <Link href="/settings" className="header__avatar" aria-label="Open profile settings">
-            <span className="header__avatar-initials">MR</span>
+            <span className="header__avatar-initials">{user?.initials ?? 'PF'}</span>
           </Link>
         </div>
       </div>

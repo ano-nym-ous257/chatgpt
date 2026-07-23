@@ -5,6 +5,7 @@ import { Badge, Button, Card, Grid } from '@paymentflow/ui';
 import { PageContainer } from '@/components/PageContainer';
 import { AgentInsightCard, PageHeader, SectionHeader, Toast } from '@/components/workspace';
 import { AGENTS, AGENT_INSIGHTS, type AgentDefinition } from '@/lib/product';
+import { useAuth } from '@/providers/auth-provider';
 
 interface ChatMessage {
   id: string;
@@ -13,15 +14,14 @@ interface ChatMessage {
   agentName?: string;
 }
 
-const STARTER_MESSAGES: ChatMessage[] = [
-  {
+function createStarterMessages(firstName: string): ChatMessage[] {
+  return [{
     id: 'welcome',
     role: 'agent',
     agentName: 'PaymentFlow Orchestrator',
-    content:
-      'Good morning, Michael. I can help explain cash flow, prepare payment drafts, review exchange-rate exposure, or summarize risk alerts. I will never execute a financial action without explicit approval.',
-  },
-];
+    content: `Good morning, ${firstName}. I can help explain cash flow, prepare payment drafts, review exchange-rate exposure, or summarize risk alerts. I will never execute a financial action without explicit approval.`,
+  }];
+}
 
 const PROMPTS = [
   'What should I review before Friday payroll?',
@@ -50,8 +50,9 @@ function createReply(prompt: string, agent: AgentDefinition): string {
 }
 
 export default function AiWorkspacePage() {
+  const { user } = useAuth();
   const [selectedAgentId, setSelectedAgentId] = useState(AGENTS[0]!.id);
-  const [messages, setMessages] = useState<ChatMessage[]>(STARTER_MESSAGES);
+  const [messages, setMessages] = useState<ChatMessage[]>(() => createStarterMessages(user?.name.split(' ')[0] ?? 'there'));
   const [prompt, setPrompt] = useState('');
   const [toast, setToast] = useState<string | null>(null);
 
