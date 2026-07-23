@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@paymentflow/ui/*": ["./packages/ui/src/*"],
+      "@paymentflow/shared-types": ["./packages/shared-types/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "**/dist", "design", "**/*.spec.ts", "**/*.test.ts"]
+}

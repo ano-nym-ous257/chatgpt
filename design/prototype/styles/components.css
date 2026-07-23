@@ -1,0 +1,121 @@
+/**
+ * PaymentFlow AI — Component Helpers
+ * Reusable component classes that map to the design-token TSX components.
+ * btn, card, copilot-quick, fraud-alert-row, fraud-score.
+ */
+
+/* ── Button ────────────────────────────────────────────────────── */
+
+.btn,
+.button {
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--stroke);
+  background: var(--glass);
+  color: var(--soft-white);
+  font-weight: 700;
+  font-size: var(--fs-6);
+  transition:
+    transform var(--motion-short) ease,
+    box-shadow var(--motion-short) ease,
+    background var(--motion-short) ease;
+}
+
+.btn:disabled,
+.button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--blue-400), var(--purple-500));
+  color: var(--navy-950);
+  border-color: transparent;
+  box-shadow: 0 8px 30px rgba(11, 86, 165, 0.18);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: rgba(238, 242, 255, 0.06);
+  color: var(--soft-white);
+}
+
+.btn--danger {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.12),
+    rgba(239, 68, 68, 0.06)
+  );
+  color: #fff;
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+/* ── Card ──────────────────────────────────────────────────────── */
+
+.card--glass {
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    180deg,
+    rgba(238, 242, 255, 0.06),
+    rgba(238, 242, 255, 0.03)
+  );
+  backdrop-filter: blur(12px);
+  padding: var(--space-4);
+}
+
+.card--elevated {
+  box-shadow: var(--elev-sm);
+}
+
+/* ── Copilot Quick Action ──────────────────────────────────────── */
+
+.copilot-quick {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(123, 75, 214, 0.12),
+    rgba(0, 191, 255, 0.08)
+  );
+  color: var(--soft-white);
+  border: 1px solid rgba(123, 75, 214, 0.12);
+  font-weight: 800;
+}
+
+/* ── Fraud Alert ───────────────────────────────────────────────── */
+
+.fraud-alert-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.12);
+  background: linear-gradient(
+    90deg,
+    rgba(239, 68, 68, 0.04),
+    rgba(238, 242, 255, 0.02)
+  );
+}
+
+.fraud-score {
+  display: inline-grid;
+  place-items: center;
+  min-width: 52px;
+  min-height: 32px;
+  border-radius: 8px;
+  font-weight: 900;
+  color: var(--navy-950);
+  background: linear-gradient(135deg, var(--amber-500), var(--red-500));
+}

@@ -1,0 +1,11 @@
+/* Design tokens (pointer)
+
+This file intentionally does NOT redeclare CSS variables to avoid duplication.
+Canonical tokens live in:
+- ../design-tokens.json  (source of truth for token exports)
+- ../styles.css         (runtime :root CSS variables)
+
+If you need an SCSS import, generate a mapped SCSS file from `design-tokens.json` during your build step.
+*/
+
+@warn "Use design-tokens.json as the single source of truth for design tokens. Do not duplicate token declarations here.";
