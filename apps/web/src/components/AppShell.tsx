@@ -7,6 +7,7 @@ import { Sidebar } from './Sidebar';
 import { CommandPalette } from './CommandPalette';
 import { NotificationDrawer } from './NotificationDrawer';
 import { MobileNav } from './MobileNav';
+import { MotionOrchestrator } from './MotionOrchestrator';
 
 export interface AppShellProps {
   children: React.ReactNode;
@@ -53,7 +54,8 @@ export function AppShell({ children }: AppShellProps) {
       />
       <Sidebar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
       {sidebarOpen && <button className="shell__overlay" onClick={handleCloseSidebar} aria-label="Close navigation" type="button" />}
-      <main id="main-content" className="shell__main" role="main">{children}</main>
+      <main key={pathname} id="main-content" className="shell__main shell__main--route" role="main">{children}</main>
+      <MotionOrchestrator />
       <CommandPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
       <NotificationDrawer open={notificationsOpen} onClose={() => setNotificationsOpen(false)} />
       <MobileNav />

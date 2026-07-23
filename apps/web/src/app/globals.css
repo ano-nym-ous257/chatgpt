@@ -129,6 +129,9 @@
   --duration-slow: 300ms;
   --duration-slower: 450ms;
   --duration-entrance: 350ms;
+  --duration-route: 420ms;
+  --duration-reveal: 560ms;
+  --stagger-step: 55ms;
 
   --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -528,7 +531,10 @@ body::after {
 .shell__main {
   padding: var(--space-8) var(--space-6);
   overflow-y: auto;
-  animation: fadeIn var(--duration-entrance) var(--ease-out) both;
+}
+
+.shell__main--route {
+  animation: routeEnter var(--duration-route) var(--ease-out) both;
 }
 
 .shell__overlay {
@@ -1651,8 +1657,198 @@ body::after {
 }
 
 /* ========================================
+   Motion System
+   Purposeful, restrained motion for hierarchy and feedback.
+   ======================================== */
+
+.motion-enabled .motion-reveal {
+  opacity: 0;
+  filter: blur(2px);
+  transform: translate3d(0, 14px, 0) scale(0.992);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out),
+    filter var(--duration-slow) var(--ease-out);
+  transition-delay: calc(var(--motion-order, 0) * var(--stagger-step));
+  will-change: opacity, transform, filter;
+}
+
+.motion-enabled .motion-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.motion-enabled .grid > .motion-reveal,
+.motion-enabled .quick-action-grid > .motion-reveal {
+  transform: translate3d(0, 18px, 0) scale(0.975);
+}
+
+.motion-enabled .grid > .motion-reveal.is-visible,
+.motion-enabled .quick-action-grid > .motion-reveal.is-visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.metric-card,
+.wallet-summary-card,
+.agent-insight,
+.payment-card,
+.agent-status-card,
+.feature-card,
+.task-queue-card,
+.market-chart-card,
+.converter-card,
+.transaction-summary__card,
+.wallet-detail-card {
+  transform: translateZ(0);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-default),
+    box-shadow var(--duration-normal) var(--ease-default),
+    background-color var(--duration-normal) var(--ease-default);
+}
+
+.metric-card__icon,
+.quick-action-card__icon,
+.quick-action-card__arrow,
+.transaction-row__icon,
+.wallet-summary-card::after,
+.agent-status-card__icon,
+.header__icon-btn,
+.header__avatar,
+.sidebar__icon,
+.mobile-nav__item > span {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.transaction-row,
+.rate-row,
+.notification-row,
+.drawer-notification,
+.command-palette__results button,
+.prompt-suggestions button,
+.mobile-nav__item {
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-default),
+    border-color var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default);
+}
+
+.live-pill > span,
+.header__notif-dot,
+.notification-row__dot,
+.drawer-notification--unread .drawer-notification__indicator {
+  animation: statusPulse 2.8s var(--ease-default) infinite;
+}
+
+.agent-status-card__icon,
+.agent-profile-card__icon {
+  animation: agentFloat 4s var(--ease-smooth) infinite;
+}
+
+.auth-page__panel {
+  animation: authPanelEnter var(--duration-slower) var(--ease-out) both;
+}
+
+.auth-page__visual {
+  animation: authVisualEnter 650ms var(--ease-out) 90ms both;
+}
+
+.auth-visual-card,
+.auth-visual-grid {
+  animation: revealUp var(--duration-slower) var(--ease-out) both;
+}
+
+.auth-visual-card:nth-child(2) { animation-delay: 120ms; }
+.auth-visual-grid { animation-delay: 200ms; }
+
+@media (hover: hover) and (pointer: fine) {
+  .metric-card:hover,
+  .wallet-summary-card:hover,
+  .agent-insight:hover,
+  .payment-card:hover,
+  .agent-status-card:hover,
+  .feature-card:hover,
+  .task-queue-card:hover,
+  .market-chart-card:hover,
+  .converter-card:hover,
+  .transaction-summary__card:hover,
+  .wallet-detail-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card-hover), var(--shadow-glow);
+  }
+
+  .metric-card:hover .metric-card__icon {
+    transform: rotate(-5deg) scale(1.09);
+  }
+
+  .wallet-summary-card:hover::after {
+    transform: translate3d(-8px, -6px, 0) scale(1.14);
+  }
+
+  .quick-action-card:hover .quick-action-card__icon {
+    transform: translateY(-2px) rotate(-4deg) scale(1.08);
+  }
+
+  .quick-action-card:hover .quick-action-card__arrow {
+    transform: translateX(5px);
+  }
+
+  .transaction-row:hover,
+  .rate-row:hover,
+  .notification-row:hover,
+  .drawer-notification:hover,
+  .command-palette__results button:hover {
+    transform: translateX(2px);
+  }
+
+  .transaction-row:hover .transaction-row__icon {
+    transform: translateY(-1px) scale(1.06);
+  }
+
+  .sidebar__link:hover {
+    transform: translateX(3px);
+  }
+
+  .sidebar__link:hover .sidebar__icon,
+  .sidebar__link--active .sidebar__icon {
+    transform: scale(1.08);
+  }
+
+  .header__icon-btn:hover,
+  .header__avatar:hover {
+    transform: translateY(-1px) scale(1.04);
+  }
+
+  .mobile-nav__item:hover > span,
+  .mobile-nav__item--active > span {
+    transform: translateY(-2px) scale(1.06);
+  }
+
+  .btn:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:not(:disabled):active {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+/* ========================================
    Entrance Animations
    ======================================== */
+
+@keyframes routeEnter {
+  from { opacity: 0; filter: blur(3px); transform: translate3d(0, 8px, 0); }
+  to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.985); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -1667,6 +1863,51 @@ body::after {
 @keyframes scaleIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes backdropEnter {
+  from { opacity: 0; backdrop-filter: blur(0); }
+  to { opacity: 1; backdrop-filter: blur(8px); }
+}
+
+@keyframes modalEnter {
+  from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.94); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes commandEnter {
+  from { opacity: 0; transform: translate3d(0, -14px, 0) scale(0.96); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes drawerEnter {
+  from { opacity: 0; transform: translate3d(32px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes toastEnter {
+  from { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.96); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+  50% { opacity: 0.72; box-shadow: 0 0 0 5px transparent; }
+}
+
+@keyframes agentFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }
+  50% { transform: translate3d(0, -3px, 0) rotate(1deg); }
+}
+
+@keyframes authPanelEnter {
+  from { opacity: 0; transform: translate3d(-18px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes authVisualEnter {
+  from { opacity: 0; transform: translate3d(20px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 /* ========================================
@@ -2405,6 +2646,7 @@ textarea:disabled {
   background: rgba(2, 6, 23, 0.76);
   backdrop-filter: blur(8px);
   cursor: default;
+  animation: backdropEnter var(--duration-normal) var(--ease-out) both;
 }
 
 .modal {
@@ -2423,7 +2665,7 @@ textarea:disabled {
   border-radius: var(--radius-2xl);
   background: var(--bg-canvas);
   box-shadow: var(--shadow-xl);
-  animation: scaleIn var(--duration-normal) var(--ease-out);
+  animation: modalEnter var(--duration-slow) var(--ease-spring);
 }
 
 .modal__header,
@@ -2457,7 +2699,7 @@ textarea:disabled {
   color: var(--text-primary);
   box-shadow: var(--shadow-floating);
   backdrop-filter: blur(16px);
-  animation: slideUp var(--duration-normal) var(--ease-out);
+  animation: toastEnter var(--duration-slow) var(--ease-spring);
 }
 
 .toast__indicator {
@@ -2792,7 +3034,7 @@ button.responsive-table__row:focus-visible { outline: 2px solid var(--border-foc
    ======================================== */
 
 .command-palette { display: flex; justify-content: center; align-items: flex-start; padding: 12vh var(--space-4) var(--space-4); }
-.command-palette__dialog { position: relative; width: min(640px, 100%); overflow: hidden; border: 1px solid var(--border-strong); border-radius: var(--radius-2xl); background: var(--bg-canvas); box-shadow: var(--shadow-xl); animation: scaleIn var(--duration-normal) var(--ease-out); }
+.command-palette__dialog { position: relative; width: min(640px, 100%); overflow: hidden; border: 1px solid var(--border-strong); border-radius: var(--radius-2xl); background: var(--bg-canvas); box-shadow: var(--shadow-xl); animation: commandEnter var(--duration-slow) var(--ease-spring); }
 .command-palette__input-wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--space-3); padding: var(--space-4); border-bottom: 1px solid var(--border-default); }
 .command-palette__input-wrap > span { color: var(--accent-hover); font-size: 1.25rem; }
 .command-palette__input-wrap input { border: 0; background: transparent; color: var(--text-primary); outline: none; font-size: var(--text-body-lg); }
@@ -2807,7 +3049,7 @@ button.responsive-table__row:focus-visible { outline: 2px solid var(--border-foc
 .command-palette__empty { padding: var(--space-8); color: var(--text-secondary); text-align: center; }
 
 .drawer { display: flex; justify-content: flex-end; }
-.drawer__panel { position: relative; display: flex; flex-direction: column; width: min(440px, 100%); height: 100%; border-left: 1px solid var(--border-strong); background: var(--bg-canvas); box-shadow: var(--shadow-xl); animation: fadeIn var(--duration-normal) var(--ease-out); }
+.drawer__panel { position: relative; display: flex; flex-direction: column; width: min(440px, 100%); height: 100%; border-left: 1px solid var(--border-strong); background: var(--bg-canvas); box-shadow: var(--shadow-xl); animation: drawerEnter var(--duration-slow) var(--ease-out); }
 .drawer__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); padding: var(--space-5); border-bottom: 1px solid var(--border-default); }
 .drawer__header h2 { font-size: var(--text-h2); }
 .drawer__toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-5); border-bottom: 1px solid var(--border-default); }
@@ -2920,14 +3162,24 @@ button.responsive-table__row:focus-visible { outline: 2px solid var(--border-foc
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .agent-card,
-  .quick-action-card,
-  .modal__dialog,
-  .toast,
-  .drawer__panel,
-  .command-palette__dialog {
-    animation: none;
-    transition: none;
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .motion-enabled .motion-reveal,
+  .motion-enabled .motion-reveal.is-visible {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
   }
 }
 

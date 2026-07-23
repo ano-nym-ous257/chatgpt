@@ -1,3 +1,11 @@
+## Unreleased
+
+### Added
+
+- Added a route-aware, viewport-triggered UI motion system with staggered module reveals.
+- Added premium micro-interactions for cards, navigation, Quick Actions, buttons, live states, dialogs, drawers, and authentication surfaces.
+- Added comprehensive reduced-motion handling and motion-system documentation for future web, mobile, and AI-agent modules.
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

@@ -12,3 +12,5 @@ export type { PageContainerProps } from './PageContainer';
 
 export { Breadcrumbs } from './Breadcrumbs';
 export type { BreadcrumbsProps, BreadcrumbItem } from './Breadcrumbs';
+
+export { MotionOrchestrator } from './MotionOrchestrator';

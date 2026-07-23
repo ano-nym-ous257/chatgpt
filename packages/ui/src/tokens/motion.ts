@@ -4,6 +4,8 @@ export const duration = {
   normal: '200ms',
   slow: '300ms',
   slower: '500ms',
+  route: '420ms',
+  reveal: '560ms',
 } as const;
 
 export const easing = {
