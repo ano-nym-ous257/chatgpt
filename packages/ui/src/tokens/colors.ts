@@ -1,0 +1,26 @@
+export const colors = {
+  primary: 'var(--color-primary)',
+  primaryHover: 'var(--color-primary-hover)',
+  primaryActive: 'var(--color-primary-active)',
+  secondary: 'var(--color-secondary)',
+  secondaryHover: 'var(--color-secondary-hover)',
+  success: 'var(--color-success)',
+  successLight: 'var(--color-success-light)',
+  warning: 'var(--color-warning)',
+  warningLight: 'var(--color-warning-light)',
+  danger: 'var(--color-danger)',
+  dangerLight: 'var(--color-danger-light)',
+  info: 'var(--color-info)',
+  infoLight: 'var(--color-info-light)',
+  surface: 'var(--color-surface)',
+  surfaceRaised: 'var(--color-surface-raised)',
+  background: 'var(--color-background)',
+  foreground: 'var(--color-foreground)',
+  muted: 'var(--color-muted)',
+  mutedForeground: 'var(--color-muted-foreground)',
+  border: 'var(--color-border)',
+  borderStrong: 'var(--color-border-strong)',
+  focus: 'var(--color-focus)',
+} as const;
+
+export type SemanticColor = keyof typeof colors;

@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: PaymentFlow AI Demo API
+  version: 0.2.0
+  description: Read-only and draft-only API surface for the deployable demonstration. No endpoint moves real funds.
+servers:
+  - url: /api/v1
+paths:
+  /wallets:
+    get:
+      summary: List demo wallets
+      responses:
+        '200':
+          description: Wallet collection
+  /payments:
+    get:
+      summary: List demo payments
+      responses:
+        '200':
+          description: Payment collection
+    post:
+      summary: Create a non-persistent demo payment draft
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [amount, currency, beneficiary, description]
+              properties:
+                amount: { type: string }
+                currency: { type: string }
+                beneficiary: { type: string }
+                description: { type: string }
+      responses:
+        '201':
+          description: Demo draft created; no funds moved
+        '400':
+          description: Invalid request
+  /transactions:
+    get:
+      summary: Search demo transactions
+      parameters:
+        - in: query
+          name: direction
+          schema: { type: string, enum: [inbound, outbound] }
+        - in: query
+          name: status
+          schema: { type: string }
+        - in: query
+          name: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Filtered transaction collection
+  /exchange-rates:
+    get:
+      summary: List indicative demo exchange rates
+      responses:
+        '200':
+          description: Rate collection
+  /agents:
+    get:
+      summary: List demo agents and personalized insights
+      responses:
+        '200':
+          description: Agent collection

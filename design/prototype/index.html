@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PaymentFlow AI - Fintech Platform Design</title>
+    <meta
+      name="description"
+      content="High-fidelity static prototype and design-system direction for PaymentFlow AI."
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient-grid" aria-hidden="true"></div>
+
+    <div class="app-frame">
+      <aside class="rail" id="rail" aria-label="PaymentFlow AI product navigation">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">PF</div>
+          <div>
+            <strong>PaymentFlow AI</strong>
+            <span>Unified fintech operating system</span>
+          </div>
+        </div>
+
+        <nav class="rail-nav" aria-label="Primary">
+          <button class="nav-item is-active" type="button" data-view="personal" aria-pressed="true">
+            <span class="nav-dot"></span>
+            Personal
+          </button>
+          <button class="nav-item" type="button" data-view="business" aria-pressed="false">
+            <span class="nav-dot"></span>
+            Business
+          </button>
+          <button class="nav-item" type="button" data-view="ai" aria-pressed="false">
+            <span class="nav-dot"></span>
+            AI Workspace
+          </button>
+          <button class="nav-item" type="button" data-view="fraud" aria-pressed="false">
+            <span class="nav-dot"></span>
+            Fraud Center
+          </button>
+          <button class="nav-item" type="button" data-view="routing" aria-pressed="false">
+            <span class="nav-dot"></span>
+            Smart Routing
+          </button>
+          <button class="nav-item" type="button" data-view="treasury" aria-pressed="false">
+            <span class="nav-dot"></span>
+            Treasury
+          </button>
+          <button class="nav-item" type="button" data-view="admin" aria-pressed="false">
+            <span class="nav-dot"></span>
+            Admin
+          </button>
+          <button class="nav-item" type="button" data-view="system" aria-pressed="false">
+            <span class="nav-dot"></span>
+            Design System
+          </button>
+        </nav>
+
+        <div class="rail-card">
+          <span class="eyebrow">AI Risk Index</span>
+          <strong>18.4</strong>
+          <p>Normal operating range across cards, ACH, mobile money, and SWIFT routes.</p>
+        </div>
+      </aside>
+
+      <main class="main" id="main">
+        <header class="topbar">
+          <button class="menu-button" type="button" id="menuButton" aria-controls="rail" aria-expanded="false">
+            Menu
+          </button>
+          <form class="search" role="search">
+            <label class="sr-only" for="globalSearch">Search PaymentFlow AI</label>
+            <input id="globalSearch" type="search" placeholder="Search users, invoices, payments, AI insights">
+          </form>
+          <div class="topbar-status" aria-label="Illustrative platform status">
+            <span class="status-dot status-dot--green"></span>
+            Illustrative status
+          </div>
+          <button class="ai-command" type="button" data-view-trigger="ai">
+            Ask AI
+          </button>
+        </header>
+
+        <section class="command-strip" aria-label="PaymentFlow AI overview">
+          <div class="command-copy">
+            <span class="eyebrow">High-fidelity fintech platform concept • illustrative data</span>
+            <h1>PaymentFlow AI unifies banking, payments, treasury, fraud, and financial intelligence.</h1>
+          </div>
+          <div class="command-metrics">
+            <article>
+              <span>Processed today</span>
+              <strong>$42.8M</strong>
+              <small>+18.6% vs prior day</small>
+            </article>
+            <article>
+              <span>AI savings found</span>
+              <strong>$184K</strong>
+              <small>Routing, FX, and SaaS spend</small>
+            </article>
+            <article>
+              <span>Fraud blocked</span>
+              <strong>$2.1M</strong>
+              <small>Illustrative prototype metric</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="view is-active" id="personal" aria-labelledby="personal-title">
+          <div class="section-heading">
+            <span class="eyebrow">PaymentFlow Personal</span>
+            <h2 id="personal-title">Mobile banking that feels intelligent from the first tap.</h2>
+            <p>
+              Consumer banking focuses on clarity, trust, and speed: balances, cross-border wallets,
+              payments, savings guidance, subscriptions, and security in one AI-assisted mobile experience.
+            </p>
+          </div>
+
+          <div class="mobile-wireframes">
+            <article class="phone">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>5G 100%</span>
+              </div>
+              <div class="phone-content">
+                <div class="screen-title">
+                  <div>
+                    <span class="eyebrow">Home</span>
+                    <h3>Good morning, Ama</h3>
+                  </div>
+                  <button class="icon-button" type="button" aria-label="Open notifications">N</button>
+                </div>
+
+                <div class="balance-card">
+                  <span>Total balance</span>
+                  <strong>$28,420.72</strong>
+                  <small>Across 6 currencies</small>
+                  <div class="spark-bars" aria-label="Balance trend">
+                    <i style="height: 34%"></i>
+                    <i style="height: 58%"></i>
+                    <i style="height: 45%"></i>
+                    <i style="height: 76%"></i>
+                    <i style="height: 68%"></i>
+                    <i style="height: 88%"></i>
+                  </div>
+                </div>
+
+                <div class="ai-insight-card">
+                  <span class="ai-chip">AI insight</span>
+                  <p>You can save $312 this month by moving rent to ACH and pausing 2 unused subscriptions.</p>
+                </div>
+
+                <div class="quick-actions">
+                  <button type="button">Send</button>
+                  <button type="button">Receive</button>
+                  <button type="button">QR Pay</button>
+                  <button type="button">Swap</button>
+                </div>
+
+                <div class="mini-panel">
+                  <div class="panel-head">
+                    <h4>Spending summary</h4>
+                    <span>June</span>
+                  </div>
+                  <div class="spend-ring" aria-label="Spending by category">
+                    <span>$3.8K</span>
+                  </div>
+                  <div class="legend-list">
+                    <span><i class="legend-blue"></i> Housing 42%</span>
+                    <span><i class="legend-purple"></i> Travel 26%</span>
+                    <span><i class="legend-green"></i> Food 18%</span>
+                  </div>
+                </div>
+
+                <div class="transaction-list">
+                  <div><span>Uber Trip</span><strong>-$18.40</strong></div>
+                  <div><span>Salary</span><strong class="positive">+$6,800.00</strong></div>
+                  <div><span>Netflix</span><strong>-$15.49</strong></div>
+                </div>
+              </div>
+              <div class="phone-tabs">
+                <span class="is-active">Home</span><span>Wallet</span><span>Pay</span><span>AI</span>
+              </div>
+            </article>
+
+            <article class="phone">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>Secure</span>
+              </div>
+              <div class="phone-content">
+                <div class="screen-title">
+                  <div>
+                    <span class="eyebrow">Wallets</span>
+                    <h3>Multi-currency wallet</h3>
+                  </div>
+                  <button class="icon-button" type="button" aria-label="Add wallet">+</button>
+                </div>
+
+                <div class="fx-card">
+                  <span>Smart conversion</span>
+                  <strong>USD -> GHS</strong>
+                  <p>AI recommends converting $2,000 before Friday to reduce FX spread by 0.42%.</p>
+                </div>
+
+                <div class="currency-list">
+                  <div><span>USD</span><strong>$12,840.20</strong><small>Primary</small></div>
+                  <div><span>EUR</span><strong>EUR 4,280.10</strong><small>SEPA ready</small></div>
+                  <div><span>GBP</span><strong>GBP 2,140.88</strong><small>Local rails</small></div>
+                  <div><span>GHS</span><strong>GHS 96,420</strong><small>Mobile money</small></div>
+                  <div><span>NGN</span><strong>NGN 8,980,000</strong><small>Instant payout</small></div>
+                  <div><span>KES</span><strong>KSh 624,200</strong><small>M-Pesa ready</small></div>
+                </div>
+              </div>
+              <div class="phone-tabs">
+                <span>Home</span><span class="is-active">Wallet</span><span>Pay</span><span>AI</span>
+              </div>
+            </article>
+
+            <article class="phone">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>Verified</span>
+              </div>
+              <div class="phone-content">
+                <div class="screen-title">
+                  <div>
+                    <span class="eyebrow">Payments</span>
+                    <h3>Move money globally</h3>
+                  </div>
+                  <button class="icon-button" type="button" aria-label="Scan QR code">QR</button>
+                </div>
+
+                <div class="payment-pad">
+                  <label for="payAmount">Amount</label>
+                  <input id="payAmount" value="$1,250.00" aria-label="Payment amount">
+                  <div class="route-preview">
+                    <span>Best route</span>
+                    <strong>ACH -> Local bank</strong>
+                    <small>Arrives today, $1.80 fee</small>
+                  </div>
+                </div>
+
+                <div class="action-stack">
+                  <button type="button">Send money</button>
+                  <button type="button">Receive money</button>
+                  <button type="button">QR payments</button>
+                  <button type="button">Scheduled payments</button>
+                  <button type="button">Recurring payments</button>
+                </div>
+              </div>
+              <div class="phone-tabs">
+                <span>Home</span><span>Wallet</span><span class="is-active">Pay</span><span>AI</span>
+              </div>
+            </article>
+
+            <article class="phone">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>AI On</span>
+              </div>
+              <div class="phone-content">
+                <div class="screen-title">
+                  <div>
+                    <span class="eyebrow">AI Insights</span>
+                    <h3>Financial intelligence</h3>
+                  </div>
+                  <button class="icon-button" type="button" aria-label="Open AI chat">AI</button>
+                </div>
+
+                <div class="insight-stack">
+                  <div class="insight-card high">
+                    <span>Spending analysis</span>
+                    <strong>Travel is 31% above your norm.</strong>
+                    <p>Upcoming hotel deposits explain most of the variance.</p>
+                  </div>
+                  <div class="insight-card">
+                    <span>Budget recommendation</span>
+                    <strong>Set dining to $420.</strong>
+                    <p>This keeps your savings goal on track for August.</p>
+                  </div>
+                  <div class="insight-card">
+                    <span>Savings suggestion</span>
+                    <strong>Move $850 to Vault.</strong>
+                    <p>Predicted surplus after bills and subscriptions.</p>
+                  </div>
+                  <div class="insight-card warn">
+                    <span>Subscription detection</span>
+                    <strong>2 unused renewals found.</strong>
+                    <p>Canva Teams and ClassPass have low activity.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="phone-tabs">
+                <span>Home</span><span>Wallet</span><span>Pay</span><span class="is-active">AI</span>
+              </div>
+            </article>
+
+            <article class="phone">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>Face ID</span>
+              </div>
+              <div class="phone-content">
+                <div class="screen-title">
+                  <div>
+                    <span class="eyebrow">Profile</span>
+                    <h3>Ama Mensah</h3>
+                  </div>
+                  <button class="icon-button" type="button" aria-label="Edit profile">E</button>
+                </div>
+
+                <div class="profile-card">
+                  <div class="avatar" aria-hidden="true">AM</div>
+                  <strong>KYC approved</strong>
+                  <span>Tier 3 verified - global transfers enabled</span>
+                </div>
+
+                <div class="settings-list">
+                  <div><span>Security settings</span><strong>Passkeys, device trust</strong></div>
+                  <div><span>KYC</span><strong>Approved</strong></div>
+                  <div><span>Linked accounts</span><strong>4 accounts</strong></div>
+                  <div><span>Preferences</span><strong>Dark, AI proactive</strong></div>
+                </div>
+              </div>
+              <div class="phone-tabs">
+                <span>Home</span><span>Wallet</span><span>Pay</span><span>Profile</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="business" aria-labelledby="business-title">
+          <div class="section-heading">
+            <span class="eyebrow">PaymentFlow Business</span>
+            <h2 id="business-title">Desktop command center for founders, finance teams, and operators.</h2>
+            <p>
+              The business platform is dense, scannable, and approval-ready, combining treasury,
+              payables, receivables, payroll, analytics, and AI recommendations.
+            </p>
+          </div>
+
+          <div class="desktop-dashboard">
+            <aside class="product-sidebar">
+              <strong>Acme Global Ltd</strong>
+              <span>Business workspace</span>
+              <nav aria-label="Business sections">
+                <a href="#business-dashboard">Dashboard</a>
+                <a href="#business-wallets">Wallets</a>
+                <a href="#business-payments">Payments</a>
+                <a href="#business-invoices">Invoices</a>
+                <a href="#business-payroll">Payroll</a>
+                <a href="#business-analytics">Analytics</a>
+              </nav>
+            </aside>
+
+            <div class="desktop-content" id="business-dashboard">
+              <div class="dashboard-topline">
+                <div>
+                  <span class="eyebrow">Business dashboard</span>
+                  <h3>Financial cockpit</h3>
+                </div>
+                <button class="primary-button" type="button">Run AI forecast</button>
+              </div>
+
+              <div class="metric-grid">
+                <article class="metric-card"><span>Revenue</span><strong>$1.84M</strong><small>+23.2% MoM</small></article>
+                <article class="metric-card"><span>Expenses</span><strong>$612.4K</strong><small>-4.8% vs plan</small></article>
+                <article class="metric-card"><span>Cash position</span><strong>$4.92M</strong><small>142 runway days</small></article>
+                <article class="metric-card"><span>Outstanding invoices</span><strong>$386K</strong><small>18 overdue</small></article>
+              </div>
+
+              <div class="dashboard-grid">
+                <article class="chart-card wide-card">
+                  <div class="panel-head">
+                    <h4>Cashflow chart</h4>
+                    <span>Actual + AI forecast</span>
+                  </div>
+                  <svg class="line-chart" viewBox="0 0 640 220" role="img" aria-label="Cashflow forecast chart">
+                    <defs>
+                      <linearGradient id="cashGradient" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0%" stop-color="#00BFFF"></stop>
+                        <stop offset="55%" stop-color="#22C55E"></stop>
+                        <stop offset="100%" stop-color="#7B4BD6"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path class="chart-grid-line" d="M20 40H620M20 90H620M20 140H620M20 190H620"></path>
+                    <path class="chart-area" d="M20 162 C80 132,118 145,158 108 C210 58,258 96,304 78 C366 52,410 92,456 68 C518 34,568 64,620 42 L620 200 L20 200 Z"></path>
+                    <path class="chart-line" d="M20 162 C80 132,118 145,158 108 C210 58,258 96,304 78 C366 52,410 92,456 68 C518 34,568 64,620 42"></path>
+                    <path class="chart-line chart-line--forecast" d="M456 68 C518 34,568 64,620 42"></path>
+                  </svg>
+                </article>
+
+                <article class="recommendation-card">
+                  <div class="panel-head">
+                    <h4>AI recommendations</h4>
+                    <span>4 open</span>
+                  </div>
+                  <div class="rec-list">
+                    <div><strong>Accelerate collections</strong><span>Send AI reminders to 12 late customers.</span></div>
+                    <div><strong>Optimize FX</strong><span>Convert EUR surplus in two tranches this week.</span></div>
+                    <div><strong>Approve safely</strong><span>Vendor Atlas Labs needs second-factor review.</span></div>
+                  </div>
+                </article>
+
+                <article class="table-card wide-card">
+                  <div class="panel-head">
+                    <h4>Recent transactions</h4>
+                    <span>Synced 2 minutes ago</span>
+                  </div>
+                  <div class="data-table" role="table" aria-label="Recent business transactions">
+                    <div role="row" class="table-header">
+                      <span role="columnheader">Counterparty</span>
+                      <span role="columnheader">Type</span>
+                      <span role="columnheader">Route</span>
+                      <span role="columnheader">Amount</span>
+                      <span role="columnheader">Status</span>
+                    </div>
+                    <div role="row"><span>Stripe payout</span><span>Revenue</span><span>ACH</span><strong>+$84,220</strong><span class="pill success">Settled</span></div>
+                    <div role="row"><span>Atlas Labs</span><span>Vendor</span><span>Wire</span><strong>-$28,400</strong><span class="pill warning">Approval</span></div>
+                    <div role="row"><span>Payroll batch</span><span>Payroll</span><span>Bulk ACH</span><strong>-$142,880</strong><span class="pill info">Scheduled</span></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-grid">
+            <article class="module-card" id="business-wallets">
+              <span class="eyebrow">Wallets</span>
+              <h3>Multi-currency treasury</h3>
+              <p>Company balances, reserved funds, local accounts, and one-click currency conversion.</p>
+              <div class="mini-table">
+                <div><span>USD Operating</span><strong>$2.48M</strong></div>
+                <div><span>EUR Receivables</span><strong>EUR 880K</strong></div>
+                <div><span>GHS Settlement</span><strong>GHS 4.2M</strong></div>
+              </div>
+            </article>
+
+            <article class="module-card" id="business-payments">
+              <span class="eyebrow">Payments</span>
+              <h3>Vendor and bulk payments</h3>
+              <p>Beneficiaries, batch import, approval policies, smart rail selection, and audit trails.</p>
+              <div class="approval-flow">
+                <span>Draft</span><span>Review</span><span>Dual approval</span><span>Release</span>
+              </div>
+            </article>
+
+            <article class="module-card" id="business-invoices">
+              <span class="eyebrow">Invoices</span>
+              <h3>Invoice management</h3>
+              <div class="status-row">
+                <span>Draft 8</span><span>Sent 31</span><span>Viewed 22</span><span>Paid 114</span><span>Overdue 18</span>
+              </div>
+            </article>
+
+            <article class="module-card" id="business-payroll">
+              <span class="eyebrow">Payroll</span>
+              <h3>Employee directory and salary runs</h3>
+              <p>Schedule payroll, validate tax fields, and release bulk salary payments across markets.</p>
+              <div class="employee-row">
+                <span>148 employees</span><strong>Next run: Jun 28</strong>
+              </div>
+            </article>
+
+            <article class="module-card" id="business-analytics">
+              <span class="eyebrow">Analytics</span>
+              <h3>Revenue forecasting and KPI dashboard</h3>
+              <p>Expense trends, AI projections, cash runway, cohort revenue, and margin variance.</p>
+              <div class="kpi-strip"><span>ARR $18.2M</span><span>Gross margin 74%</span><span>Runway 14.2 mo</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="ai" aria-labelledby="ai-title">
+          <div class="section-heading">
+            <span class="eyebrow">AI Platform</span>
+            <h2 id="ai-title">Dedicated AI workspace for financial decisions.</h2>
+            <p>
+              PaymentFlow Copilot combines banking context, accounting data, risk signals, and payment
+              routing intelligence in one governed conversational workspace.
+            </p>
+          </div>
+
+          <div class="ai-workspace">
+            <article class="copilot-panel">
+              <div class="chat-header">
+                <div>
+                  <span class="eyebrow">AI Copilot</span>
+                  <h3>Ask about cash, payments, revenue, or risk</h3>
+                </div>
+                <span class="pill success">Finance context active</span>
+              </div>
+              <div class="prompt-row">
+                <button type="button">Show top expenses.</button>
+                <button type="button">Predict next month's revenue.</button>
+                <button type="button">Which customers pay late?</button>
+              </div>
+              <div class="chat-stream" aria-label="AI Copilot conversation">
+                <div class="message user">Predict next month's revenue and explain the main drivers.</div>
+                <div class="message ai">
+                  <strong>Projected revenue: $2.08M to $2.16M.</strong>
+                  Expansion revenue from 18 enterprise accounts is the biggest driver. Late payments from
+                  the media cohort could delay $92K unless reminders are sent this week.
+                </div>
+                <div class="message user">Create an action plan.</div>
+                <div class="message ai">
+                  Send collection nudges, convert EUR surplus in two batches, and hold $480K in overnight
+                  treasury until payroll clears.
+                </div>
+              </div>
+              <form class="chat-compose">
+                <label class="sr-only" for="copilotInput">Message AI Copilot</label>
+                <input id="copilotInput" placeholder="Ask PaymentFlow AI anything about money movement">
+                <button class="primary-button" type="submit">Send</button>
+              </form>
+            </article>
+
+            <aside class="insights-feed" aria-label="AI insights feed">
+              <div class="panel-head">
+                <h3>AI insights feed</h3>
+                <span>Live</span>
+              </div>
+              <article class="feed-card"><span>Cost optimization</span><strong>Save $18.2K on routing</strong><p>Move 62% of EU payouts from card rails to SEPA instant.</p></article>
+              <article class="feed-card"><span>Revenue opportunity</span><strong>Upsell 11 customers</strong><p>Usage expansion indicates $210K in attainable ARR.</p></article>
+              <article class="feed-card danger"><span>Fraud warning</span><strong>Velocity spike detected</strong><p>Five device fingerprints share a risky IP cluster.</p></article>
+              <article class="feed-card"><span>Treasury recommendation</span><strong>Improve yield by 38 bps</strong><p>Shift idle USD from operating to insured sweep.</p></article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="fraud" aria-labelledby="fraud-title">
+          <div class="section-heading">
+            <span class="eyebrow">Fraud Center</span>
+            <h2 id="fraud-title">Professional fraud operations for real-time payment risk.</h2>
+            <p>
+              Analysts can triage live fraud alerts, inspect transaction behavior, and enforce risk
+              controls without losing sight of customer experience.
+            </p>
+          </div>
+
+          <div class="ops-grid">
+            <article class="risk-panel">
+              <div class="panel-head">
+                <h3>Live fraud alerts</h3>
+                <span>24 open</span>
+              </div>
+              <div class="alert-list">
+                <div class="alert-row high-risk"><strong>High Risk</strong><span>Device takeover pattern on NGN card payouts</span><small>Risk score 94</small></div>
+                <div class="alert-row medium-risk"><strong>Medium Risk</strong><span>New beneficiary added before wire release</span><small>Risk score 68</small></div>
+                <div class="alert-row low-risk"><strong>Low Risk</strong><span>Unusual late-night login from trusted device</span><small>Risk score 31</small></div>
+              </div>
+            </article>
+
+            <article class="risk-score-card">
+              <span class="eyebrow">Risk score distribution</span>
+              <div class="risk-gauge" aria-label="Risk score 74">
+                <span>74</span>
+              </div>
+              <div class="risk-legend">
+                <span><i class="low-risk-dot"></i> Low Risk</span>
+                <span><i class="medium-risk-dot"></i> Medium Risk</span>
+                <span><i class="high-risk-dot"></i> High Risk</span>
+              </div>
+            </article>
+
+            <article class="table-card wide-card">
+              <div class="panel-head">
+                <h3>Investigation queue</h3>
+                <span>SLA tracked</span>
+              </div>
+              <div class="data-table compact" role="table" aria-label="Fraud investigation queue">
+                <div role="row" class="table-header"><span>Case</span><span>Entity</span><span>Signal</span><span>Owner</span><span>Priority</span></div>
+                <div role="row"><span>FR-2049</span><span>Kobo Market</span><span>Behavioral mismatch</span><span>Nia</span><span class="pill danger">High</span></div>
+                <div role="row"><span>FR-2048</span><span>Juno Inc</span><span>Beneficiary anomaly</span><span>Ravi</span><span class="pill warning">Medium</span></div>
+                <div role="row"><span>FR-2047</span><span>Ama Mensah</span><span>Card-not-present</span><span>Leah</span><span class="pill success">Low</span></div>
+              </div>
+            </article>
+
+            <article class="behavior-card">
+              <div class="panel-head">
+                <h3>Behavioral analytics</h3>
+                <span>Last 30 minutes</span>
+              </div>
+              <div class="behavior-bars" aria-label="Behavioral analytics bars">
+                <span style="--bar: 72%">Login velocity</span>
+                <span style="--bar: 46%">Device age</span>
+                <span style="--bar: 82%">Payment deviation</span>
+                <span style="--bar: 28%">Location risk</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="routing" aria-labelledby="routing-title">
+          <div class="section-heading">
+            <span class="eyebrow">Smart Routing Center</span>
+            <h2 id="routing-title">AI payment routing across cost, speed, and reliability.</h2>
+            <p>
+              Operators compare providers, monitor corridors, and accept AI route recommendations based
+              on live fee curves, settlement windows, and reliability.
+            </p>
+          </div>
+
+          <div class="routing-layout">
+            <article class="route-map">
+              <div class="panel-head">
+                <h3>Payment route</h3>
+                <span>USD to GHS</span>
+              </div>
+              <div class="route-steps" aria-label="Payment route visualization">
+                <div><strong>Origin</strong><span>US ACH</span></div>
+                <i></i>
+                <div><strong>FX</strong><span>USD/GHS pool</span></div>
+                <i></i>
+                <div><strong>Local rail</strong><span>GIP instant</span></div>
+                <i></i>
+                <div><strong>Recipient</strong><span>Ghana bank</span></div>
+              </div>
+            </article>
+
+            <article class="comparison-card">
+              <div class="panel-head">
+                <h3>Cost comparison</h3>
+                <span>$10K transfer</span>
+              </div>
+              <div class="comparison-list">
+                <div><span>Route A - Bank wire</span><strong>$42.80</strong><meter min="0" max="100" value="54">54%</meter></div>
+                <div><span>Route B - PaymentFlow Smart</span><strong>$18.20</strong><meter min="0" max="100" value="88">88%</meter></div>
+                <div><span>Route C - Card rails</span><strong>$86.10</strong><meter min="0" max="100" value="28">28%</meter></div>
+              </div>
+            </article>
+
+            <article class="provider-card">
+              <div class="panel-head">
+                <h3>Provider reliability</h3>
+                <span>Live health</span>
+              </div>
+              <div class="provider-grid">
+                <div><span>Stripe Treasury</span><strong>99.98%</strong><small>Stable</small></div>
+                <div><span>Wise Platform</span><strong>99.95%</strong><small>Stable</small></div>
+                <div><span>Local ACH</span><strong>98.72%</strong><small>Delayed</small></div>
+                <div><span>Mobile Money</span><strong>99.12%</strong><small>Healthy</small></div>
+              </div>
+            </article>
+
+            <article class="recommendation-card">
+              <div class="panel-head">
+                <h3>Routing recommendation</h3>
+                <span>AI confidence 96%</span>
+              </div>
+              <p>
+                Use ACH funding, split FX execution into two lots, and release through GIP instant after
+                local settlement window opens. Expected savings: $24.60 per $10K.
+              </p>
+              <button class="primary-button" type="button">Approve smart route</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="treasury" aria-labelledby="treasury-title">
+          <div class="section-heading">
+            <span class="eyebrow">Treasury Intelligence</span>
+            <h2 id="treasury-title">Liquidity, forecasting, exposure, and settlement optimization.</h2>
+            <p>
+              Treasury leaders see how cash moves today, where it will be needed next, and which currency
+              exposures require action.
+            </p>
+          </div>
+
+          <div class="treasury-grid">
+            <article class="metric-card">
+              <span>Liquidity monitoring</span>
+              <strong>$9.84M</strong>
+              <small>Available within 24h</small>
+            </article>
+            <article class="metric-card">
+              <span>Cash forecasting</span>
+              <strong>14.2 mo</strong>
+              <small>AI runway projection</small>
+            </article>
+            <article class="metric-card">
+              <span>Currency exposure</span>
+              <strong>$1.2M</strong>
+              <small>EUR and GHS net risk</small>
+            </article>
+            <article class="metric-card">
+              <span>Settlement optimization</span>
+              <strong>38 bps</strong>
+              <small>Potential yield pickup</small>
+            </article>
+
+            <article class="chart-card wide-card">
+              <div class="panel-head">
+                <h3>Cash forecast</h3>
+                <span>13-week liquidity</span>
+              </div>
+              <div class="forecast-bars" aria-label="Cash forecast bars">
+                <i style="--h: 54%"></i><i style="--h: 58%"></i><i style="--h: 66%"></i><i style="--h: 62%"></i>
+                <i style="--h: 74%"></i><i style="--h: 70%"></i><i style="--h: 82%"></i><i style="--h: 88%"></i>
+                <i style="--h: 84%"></i><i style="--h: 78%"></i><i style="--h: 92%"></i><i style="--h: 86%"></i>
+              </div>
+            </article>
+
+            <article class="exposure-card">
+              <div class="panel-head">
+                <h3>Currency exposure</h3>
+                <span>Net open positions</span>
+              </div>
+              <div class="exposure-list">
+                <div><span>USD</span><strong>$6.4M</strong><small>Base currency</small></div>
+                <div><span>EUR</span><strong>EUR 1.1M</strong><small>Hedge suggested</small></div>
+                <div><span>GHS</span><strong>GHS 7.8M</strong><small>Settlement buffer</small></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="admin" aria-labelledby="admin-title">
+          <div class="section-heading">
+            <span class="eyebrow">PaymentFlow Admin</span>
+            <h2 id="admin-title">Operations portal for compliance, support, and platform health.</h2>
+            <p>
+              Admin teams manage users, KYC, AML alerts, audit evidence, system health, API uptime,
+              and revenue metrics from one controlled workspace.
+            </p>
+          </div>
+
+          <div class="admin-layout">
+            <article class="table-card">
+              <div class="panel-head">
+                <h3>User management</h3>
+                <span>43 pending</span>
+              </div>
+              <div class="data-table compact" role="table" aria-label="User approvals and KYC review">
+                <div role="row" class="table-header"><span>User</span><span>KYC</span><span>Status</span><span>Action</span></div>
+                <div role="row"><span>Kojo Addo</span><span>Enhanced</span><span class="pill warning">Review</span><button type="button">Approve</button></div>
+                <div role="row"><span>Lina Park</span><span>Standard</span><span class="pill success">Clear</span><button type="button">Activate</button></div>
+                <div role="row"><span>Atlas Labs</span><span>Business</span><span class="pill danger">Hold</span><button type="button">Investigate</button></div>
+              </div>
+            </article>
+
+            <article class="compliance-card">
+              <div class="panel-head">
+                <h3>Compliance center</h3>
+                <span>AML monitored</span>
+              </div>
+              <div class="compliance-list">
+                <div><strong>AML monitoring</strong><span>11 cases require analyst review.</span></div>
+                <div><strong>Regulatory reports</strong><span>2 reports due in 5 days.</span></div>
+                <div><strong>Audit logs</strong><span>42,809 events retained and searchable.</span></div>
+              </div>
+            </article>
+
+            <article class="monitoring-card wide-card">
+              <div class="panel-head">
+                <h3>Platform monitoring</h3>
+                <span>99.99% uptime</span>
+              </div>
+              <div class="health-grid">
+                <div><span>System health</span><strong>Operational</strong><small>All services green</small></div>
+                <div><span>API health</span><strong>118 ms</strong><small>p95 latency</small></div>
+                <div><span>Revenue metrics</span><strong>$4.8M</strong><small>Net revenue this month</small></div>
+                <div><span>Webhook delivery</span><strong>99.97%</strong><small>Last 24 hours</small></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="system" aria-labelledby="system-title">
+          <div class="section-heading">
+            <span class="eyebrow">Design System and Handoff</span>
+            <h2 id="system-title">Design foundations for future PaymentFlow AI implementation.</h2>
+            <p>
+              The system balances premium dark fintech polish with enterprise density, accessibility,
+              and responsive behavior across mobile consumer flows and desktop operations.
+            </p>
+          </div>
+
+          <div class="system-grid">
+            <article class="system-card wide-card">
+              <h3>Color palette</h3>
+              <div class="swatches" aria-label="PaymentFlow AI color palette">
+                <div style="--swatch: #050713"><span>Deep Navy</span><strong>#050713</strong></div>
+                <div style="--swatch: #00BFFF"><span>Electric Blue</span><strong>#00BFFF</strong></div>
+                <div style="--swatch: #7B4BD6"><span>AI Purple</span><strong>#7B4BD6</strong></div>
+                <div style="--swatch: #22C55E"><span>Emerald Green</span><strong>#22C55E</strong></div>
+                <div style="--swatch: #EEF2FF"><span>Soft White</span><strong>#EEF2FF</strong></div>
+              </div>
+            </article>
+
+            <article class="system-card">
+              <h3>Typography scale</h3>
+              <div class="type-scale">
+                <span>Display 48/56</span>
+                <strong>Heading 36/44</strong>
+                <b>Section 28/36</b>
+                <em>Body 16/26</em>
+                <small>Caption 12/18</small>
+              </div>
+            </article>
+
+            <article class="system-card">
+              <h3>Component library</h3>
+              <div class="component-list">
+                <button class="primary-button" type="button">Primary action</button>
+                <button class="secondary-button" type="button">Secondary action</button>
+                <span class="pill success">Success</span>
+                <span class="pill warning">Review</span>
+                <span class="pill danger">High risk</span>
+              </div>
+            </article>
+
+            <article class="system-card wide-card">
+              <h3>Information architecture</h3>
+              <div class="ia-map">
+                <div><strong>Personal</strong><span>Home, Wallets, Payments, AI Insights, Profile</span></div>
+                <div><strong>Business</strong><span>Dashboard, Wallets, Payments, Invoices, Payroll, Analytics</span></div>
+                <div><strong>AI</strong><span>Copilot, Insights Feed, Forecasts, Actions</span></div>
+                <div><strong>Risk</strong><span>Fraud Center, Smart Routing, Treasury Intelligence</span></div>
+                <div><strong>Admin</strong><span>User Management, Compliance, Platform Monitoring</span></div>
+              </div>
+            </article>
+
+            <article class="system-card">
+              <h3>User journeys</h3>
+              <ol class="journey-list">
+                <li>Personal user receives salary, sees AI surplus, moves money to savings.</li>
+                <li>Founder reviews dashboard, approves vendor batch, accepts smart route.</li>
+                <li>Finance lead asks Copilot about revenue forecast, triggers invoice reminders.</li>
+                <li>Fraud analyst investigates high-risk payout and blocks suspicious beneficiaries.</li>
+                <li>Admin reviews KYC, checks AML report status, monitors API health.</li>
+              </ol>
+            </article>
+
+            <article class="system-card">
+              <h3>Responsive layouts</h3>
+              <p>
+                Personal screens use a single-column phone frame first. Business, risk, treasury, and
+                admin use desktop grids that simplify below 1100px and stack into one column below 760px.
+              </p>
+              <div class="layout-chips">
+                <span>360 mobile</span><span>768 tablet</span><span>1440 desktop</span>
+              </div>
+            </article>
+
+            <article class="system-card wide-card">
+              <h3>Developer handoff specifications</h3>
+              <div class="handoff-list">
+                <div><strong>Tokens</strong><span>Use CSS custom properties mirrored from design-tokens.json.</span></div>
+                <div><strong>Accessibility</strong><span>Every actionable control needs visible focus, semantic labels, and keyboard support.</span></div>
+                <div><strong>Data density</strong><span>Financial tables should preserve numeric alignment and status chips at all widths.</span></div>
+                <div><strong>Motion</strong><span>Use subtle transforms and opacity. Honor prefers-reduced-motion.</span></div>
+                <div><strong>Charts</strong><span>Pair color with labels and values. Do not rely on color alone for risk or status.</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div
+      class="prototype-notice"
+      id="prototypeNotice"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      hidden
+    ></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+/**
+ * PaymentFlow AI — Reset & Base Styles
+ * Box-sizing, scroll behavior, body defaults, focus styles, SR-only.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(120deg, rgba(0, 191, 255, 0.08), transparent 34%),
+    linear-gradient(240deg, rgba(123, 75, 214, 0.12), transparent 36%),
+    linear-gradient(180deg, var(--navy-950), #090d1f 52%, #050713);
+  color: var(--soft-white);
+  font-family: var(--font);
+  letter-spacing: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.sr-only,
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  margin: 16px;
+  padding: 10px 14px;
+  clip: auto;
+  z-index: 50;
+  color: var(--navy-950);
+  background: var(--blue-400);
+  border-radius: var(--radius);
+}

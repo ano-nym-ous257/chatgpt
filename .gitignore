@@ -1,0 +1,42 @@
+# OS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+
+# Backups
+*.bak
+backups/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Secrets and certificates
+*.pem
+*.key
+*.cert
+*.p12
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Turbo
+.turbo/
+
+# Next.js
+.next/
+*.tsbuildinfo

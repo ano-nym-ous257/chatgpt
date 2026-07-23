@@ -1,0 +1,19 @@
+/**
+ * PaymentFlow AI — Modular CSS Index
+ *
+ * Import this file instead of styles.css to get the same styles
+ * organized into logical modules. Each module can be imported
+ * independently for packages that only need tokens or components.
+ *
+ * Module load order matters:
+ * 1. tokens  — CSS custom properties (no selectors)
+ * 2. reset   — box-sizing, body defaults, focus, sr-only
+ * 3. components — reusable component classes (btn, card, etc.)
+ *
+ * The original styles.css is preserved for backward compatibility
+ * with index.html (which loads it directly via <link>).
+ */
+
+@import './tokens.css';
+@import './reset.css';
+@import './components.css';
