@@ -44,6 +44,7 @@ export default function LoginPage() {
 
   return (
     <AuthScaffold
+      mode="login"
       eyebrow="Secure workspace access"
       title="Welcome back"
       description="Sign in to manage wallets, approvals, payments, and AI-guided treasury work."

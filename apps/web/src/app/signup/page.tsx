@@ -51,6 +51,7 @@ export default function SignupPage() {
 
   return (
     <AuthScaffold
+      mode="signup"
       eyebrow="Create your workspace"
       title="Move money with clarity"
       description="Set up a secure PaymentFlow workspace for your team, wallets, and AI-assisted operations."

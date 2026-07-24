@@ -2,6 +2,7 @@
 
 ### Added
 
+- Reworked authentication into an interactive lamplight experience with an animated, keyboard-accessible pull cord that switches between sign in and sign up.
 - Added Lamplight-inspired login and signup experiences with validation, protected workspace routing, persistent demo sessions, and sign-out.
 - Added a global light/dark appearance system with persisted preference, no-flash initialization, header/auth toggles, and settings controls.
 - Personalized navigation, profile settings, dashboard greetings, and the AI workspace from the active demo account.

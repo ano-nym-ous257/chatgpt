@@ -3,7 +3,7 @@
 Provides the deployable MVP authentication experience.
 
 Implemented now:
-- Lamplight-inspired login and registration pages
+- Interactive lamplight login and registration pages; pulling the accessible lamp cord switches between sign in and sign up
 - Browser-local demo accounts with salted SHA-256 password hashes
 - Remember-me and session-only sign-in modes
 - Protected workspace routes, profile-aware navigation, and sign-out
